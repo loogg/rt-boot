@@ -1,0 +1,101 @@
+menu "Hardware Drivers Config"
+
+config SOC_STM32F407VG
+    bool
+    select SOC_SERIES_STM32F4
+    select RT_USING_COMPONENTS_INIT
+    select RT_USING_USER_MAIN
+    default y
+
+menu "Onboard Peripheral Drivers"
+
+    config BSP_USING_SPI_FLASH
+        bool "Enable SPI FLASH (W25Q64 spi1)"
+        select BSP_USING_SPI
+        select BSP_USING_SPI1
+        select RT_USING_SFUD
+        select RT_SFUD_USING_SFDP
+        default n
+
+    config PHY_USING_KSZ8863
+        bool
+    
+    config BSP_USING_ETH
+        bool "Enable Ethernet"
+        default n
+        select RT_USING_LWIP
+        select PHY_USING_KSZ8863
+        select BSP_USING_I2C2
+
+    if RT_USING_DFS_ROMFS
+        config DFS_ROMFS_ROOT
+        bool "Using ROMFS new Root"
+        default y
+    endif
+
+endmenu
+
+menu "On-chip Peripheral Drivers"
+
+    config BSP_USING_GPIO
+        bool "Enable GPIO"
+        select RT_USING_PIN
+        default y
+    
+    menuconfig BSP_USING_UART
+        bool "Enable UART"
+        default n
+        select RT_USING_SERIAL
+        if BSP_USING_UART
+
+            config BSP_USING_UART2
+                bool "Enable UART2"
+                default n
+
+        endif
+
+    config BSP_USING_ON_CHIP_FLASH
+        bool "Enable on-chip FLASH"
+        default n
+
+    menuconfig BSP_USING_SPI
+        bool "Enable SPI BUS"
+        default n
+        select RT_USING_SPI
+        if BSP_USING_SPI
+            config BSP_USING_SPI1
+                bool "Enable SPI1 BUS"
+                default n
+        endif
+
+    menuconfig BSP_USING_I2C2
+        bool "Enable I2C2 BUS (software simulation)"
+        default y
+        select RT_USING_I2C
+        select RT_USING_I2C_BITOPS
+        select RT_USING_PIN
+        if BSP_USING_I2C2
+            config BSP_I2C2_SCL_PIN
+                int "i2c2 scl pin number"
+                range 0 143
+                default 8
+            config BSP_I2C2_SDA_PIN
+                int "I2C2 sda pin number"
+                range 0 143
+                default 41
+        endif
+
+    config BSP_USING_WDT
+        bool "Enable Watchdog Timer"
+        select RT_USING_WDT
+        default n
+
+ source "libraries/HAL_Drivers/Kconfig"
+    
+endmenu
+
+menu "Board extended module Drivers"
+
+endmenu
+
+endmenu
