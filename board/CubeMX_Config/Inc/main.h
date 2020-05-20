@@ -76,6 +76,8 @@ void Error_Handler(void);
 #define SCL3_GPIO_Port GPIOA
 #define W25Q64_CS_Pin GPIO_PIN_7
 #define W25Q64_CS_GPIO_Port GPIOB
+#define KEY_Pin GPIO_PIN_1
+#define KEY_GPIO_Port GPIOE
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

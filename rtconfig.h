@@ -100,6 +100,7 @@
 #define RT_SFUD_USING_SFDP
 #define RT_SFUD_USING_FLASH_INFO_TABLE
 #define RT_SFUD_SPI_MAX_HZ 50000000
+#define RT_USING_WDT
 
 /* Using USB */
 
@@ -189,15 +190,9 @@
 
 /* Select supported modules */
 
-#define WEBNET_USING_AUTH
 #define WEBNET_USING_CGI
-#define WEBNET_USING_ASP
-#define WEBNET_USING_SSI
-#define WEBNET_USING_INDEX
-#define WEBNET_USING_ALIAS
 #define WEBNET_USING_UPLOAD
 #define WEBNET_CACHE_LEVEL 0
-#define WEBNET_USING_SAMPLES
 #define PKG_USING_WEBNET_LATEST_VERSION
 
 /* Wi-Fi */
@@ -236,6 +231,10 @@
 
 /* peripheral libraries and drivers */
 
+#define PKG_USING_AGILE_LED
+#define PKG_AGILE_LED_THREAD_STACK_SIZE 512
+#define PKG_AGILE_LED_THREAD_PRIORITY 28
+#define PKG_USING_AGILE_LED_LATEST_VERSION
 
 /* miscellaneous packages */
 
@@ -267,6 +266,7 @@
 #define BSP_USING_I2C2
 #define BSP_I2C2_SCL_PIN 8
 #define BSP_I2C2_SDA_PIN 41
+#define BSP_USING_WDT
 
 /* Board extended module Drivers */
 

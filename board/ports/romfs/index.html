@@ -1,81 +1,90 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-  <head>
-    <title> WebNet </title>
-    <meta http-equiv="Content-Type" content="text/html; charset=gbk" />
-  </head>
- 
-  <body>
-    <h1>WebNet</h1>
-    WebNet ÊÇ RT-Thread RTOS ÉÏµÄĞÂÒ»´ú web server£¬ÌùÉíÎªĞ¡ĞÍÇ¶ÈëÊ½Éè±¸¶¨ÖÆ£¬¾ßÓĞµÍ×ÊÔ´Õ¼ÓÃ£¬À©Õ¹ĞÔºÃµÄÌØµã¡£
-    <hr>
-    
-    <h2>WebNet ¹¦ÄÜ</h2>  
-    <ul>
-      <li>Ö§³Ö HTTP 1.0/1.1 ¹æ·¶
-      <li>Ö§³Ö AUTH »ù±¾ÈÏÖ¤
-      <li>Ö§³Ö CGI ÊÂ¼ş´¦Àí
-      <li>Ö§³Ö ASP ±äÁ¿Ìæ»»
-      <li>Ö§³Ö SSI ÎÄ¼şÇ¶Èë
-      <li>Ö§³Ö INDEX Ä¿Â¼ÏÔÊ¾
-      <li>Ö§³Ö ALIAS ±ğÃû
-      <li>Ö§³Ö upload ÎÄ¼şÉÏ´«
-    </ul>
-    
-    <hr>
-    <h3>1. AUTH Test</h3>
-    WebNet »ù±¾ÈÏÖ¤¹¦ÄÜÉè¼Æ³ÉÓë URL Ä¿Â¼Ïà¹Ò¹³£¬ÔÚÊ¹ÓÃÊ±¿ÉÒÔ<b>¸ù¾İÄ¿Â¼»®·Ö·ÃÎÊÈ¨ÏŞ</b>¡£
-    <br/><br/>
-    <a href="/admin/">»ù±¾ÈÏÖ¤¹¦ÄÜ²âÊÔ£ºÓÃ»§Ãû¼°ÃÜÂëÎª <b>admin:admin</b></a>
-    <br/><br/>
-    
-    <hr>
-    <h3>2. CGI Test</h3>
-    WebNet CGI ¹¦ÄÜ¿ÉÒÔÈÃÓÃ»§Ö´ĞĞÖ¸¶¨µÄº¯Êı£¬CGI²âÊÔ£º
-    <br/><br/>
-    <a href="/cgi-bin/hello">> hello world</a>
-    <br/>
-    <a href="/cgi-bin/calc">> calc</a>
-    <br/><br/>
-    
-    <hr>
-    <h3>3. ASP Test</h3>
-    WebNet ÊµÏÖµÄÊÇÒ»ÖÖ¼ò»¯·½Ê½µÄ ASP ±äÁ¿Ìæ»»£¬¼´µ±Ò³ÃæÖĞÓĞ<b><% %></b> ±ê¼Ç³öÏÖÊ±£¬½«×Ô¶¯Ìæ»»³ÉÓÃ»§×¢²áµÄ×Ö·û´®²¢Êä¡£
-    <br/><br/>
-    <a href="/version.asp">ASP ¹¦ÄÜ²âÊÔ£º·ÃÎÊ version.asp ÎÄ¼ş£¬´òÓ¡µ±Ç° RT-Thread ÏµÍ³°æ±¾ºÅ</a>
-    <br/><br/>
-    
-    <hr>
-    <h3>4. SSI Test</h3>
-    SSI ¹¦ÄÜÄ£¿é¿ÉÒÔÓÃÓÚÖ´ĞĞ·şÎñÆ÷ÉÏ³ÌĞò»òÕß²åÈëÎÄ±¾ÄÚÈİµ½ÍøÒ³ÖĞÒ³Ãæ´úÂëÖĞÓĞ <b>#include virtual="/xxx"</b> »òÕß <b>#include file="/xxx"</b> ±ê¼Ç´æÔÚÊ±£¬½«×Ô¶¯½âÎö³É¶ÔÓ¦ÎÄ¼şÖĞµÄĞÅÏ¢¡£
-    <br/><br/>
-    <a href="/index.shtml">SSI ¹¦ÄÜ²âÊÔ£º·ÃÎÊ /version.shtml Ò³Ãæ£¬ÆäÖĞÇ¶Ì×ÁË /index.html Ò³Ãæ</a>
-    <br/><br/>
-    
-    <hr>
-    <h3>5. INDEX Test</h3>
-    INDEX ¹¦ÄÜÄ£¿é¿ÉÒÔ×Ô¶¯ÏÔÊ¾Ä¿Â¼ÏÂÎÄ¼şÁĞ±í£¬µ±·ÃÎÊÄ¿Â¼ÖĞ²»´æÔÚ index.htm, index.html, index.asp µÈÎÄ¼şÊ±£¬½«×Ô¶¯ÏÔÊ¾Õâ¸öÄ¿Â¼ÏÂµÄÎÄ¼şÁĞ±í¡£
-    <br/><br/>
-    <a href="/admin/">INDEX ¹¦ÄÜ²âÊÔ£º·ÃÎÊ/admin Ä¿Â¼£¬ÁĞ³öÄ¿Â¼ÏÂËùÓĞÎÄ¼ş</a>
-    <br/><br/>
-    
-    <hr>
-    <h3>6. ALIAS Test</h3>
-    ALIAS ±ğÃûÄ£¿é¿ÉÒÔ¸øµ±Ç°×ÊÔ´ÎÄ¼ş¼ĞÉèÖÃ¶à¸ö±ğÃû£¬¿ÉÒÔÓÃÓÚ<b>³¤Â·¾¶µÄ¼ò»¯²Ù×÷</b>£¬·½±ãÓÃ»§¶Ô×ÊÔ´µÄ·ÃÎÊ¡£
-    <br/><br/>
-    <a href="/test/">ALIAS ¹¦ÄÜ²âÊÔ£º·ÃÎÊ /test Ä¿Â¼»áÌø×ªµ½ /admin Ä¿Â¼</a>
-    <br/><br/>
-    
-    <hr>
-    <h3>7. Upload File Test</h3>
-    ÎÄ¼şÉÏ´«Ä£¿é¿ÉÒÔÓÃÓÚÉÏ´«ÎÄ¼şµ½Ö¸¶¨µÄÄ¿Â¼£¬ÕâÀïÉÏ´«µ½¸ùÄ¿Â¼ÏÂµÄ /upload Ä¿Â¼¡£
-    <br/><br/>
-    <form name="upload" method="POST" enctype="multipart/form-data" action="/upload">
-      <input type="file" name="file1" >
-      <input type="submit" name="submit" value="ÉÏ´«">
+
+<head>
+    <title>Gateway Update</title>
+    <meta charset="UTF-8">
+    <style type="text/css">
+        #parent {
+            position: relative;
+            width: 500px;
+            height: 20px;
+            border: 1px solid #ccc;
+            display: none;
+            border-radius: 20px
+        }
+
+        #child {
+            position: absolute;
+            width: 0%;
+            height: 20px;
+            background: #5FB878;
+            display: none;
+            line-height: 20px;
+            color: #ffffff;
+            font-size: 12px;
+            border-radius: 20px
+        }
+    </style>
+    <script type="text/javascript">
+        function $(id) {
+            return document.getElementById(id);
+        }
+    </script>
+</head>
+
+<body>
+    <form action="" method="post" enctype="multipart/form-data">
+        <div id="parent">
+            <div id="child"></div>
+        </div>
+        <p>ä¸Šä¼ æ–‡ä»¶:<input type="file" name="file"></p>
+        <p><input type="submit" value="æäº¤" id="submit"></p>
     </form>
-    <br/>
-    <a href="/upload/">µã»÷ä¯ÀÀÉÏ´«ÎÄ¼şµÄÄ¿Â¼</a>
-    <br/><br/>
-  </body>
+    <script type="text/javascript">
+        var oForm = document.getElementsByTagName('form')[0];
+        var oSubmit = $('submit');
+        //å¦‚æœå¤šä¸ªäººåŒæ—¶æäº¤è¿™ä¸ªè¡¨å•çš„æ—¶å€™ï¼Œç”±äºæ˜¯å¼‚æ­¥çš„è¯·æ±‚ï¼Œäº’ä¸å½±å“
+        oSubmit.onclick = function () {
+            try {
+                var xhr = new XMLHttpRequest();
+            } catch (e) {
+                var xhr = new ActiveXObject("Msxml2.XMLHTTP");
+            }
+            xhr.upload.onprogress = function (e) {
+                var ev = e || window.event;
+                var percent = Math.floor((ev.loaded / ev.total) * 100);
+                // console.log(percent);
+                //å°†ç™¾åˆ†æ¯”æ˜¾ç¤ºåˆ°è¿›åº¦æ¡
+                $('parent').style.display = 'block';
+                $('child').style.display = 'block';
+                //å°†ä¸Šä¼ è¿›åº¦çš„ç™¾åˆ†æ¯”æ˜¾ç¤ºåˆ°childé‡Œé¢
+                $('child').style.width = percent + '%';
+                $('child').style.textAlign = 'center';
+                $('child').innerHTML = percent + '%';
+                //åˆ¤æ–­å¦‚æœç™¾åˆ†æ¯”åˆ°è¾¾100%æ—¶å€™ï¼Œéšè—æ‰
+                if (percent == 100) {
+                    $('parent').style.display = 'none';
+                    $('child').style.display = 'none';
+                }
+            }
+            xhr.open('post', '/app', true);
+            var form = new FormData(oForm);
+            xhr.send(form);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    eval("var obj =" + xhr.responseText);
+                    if (obj.code == 0) {
+                        alert('ä¸Šä¼ æˆåŠŸ');
+                    } else {
+                        alert('ä¸Šä¼ å¤±è´¥');
+                    }
+                }
+            }
+            //é˜»æ­¢è¡¨å•æäº¤
+            return false;
+        }
+    </script>
+</body>
+
 </html>

@@ -168,10 +168,15 @@ void SystemInit(void)
   __HAL_RCC_PWR_CLK_ENABLE();
   HAL_PWR_EnableBkUpAccess();
     
-  static RTC_HandleTypeDef RTC_Handler;
+  RTC_HandleTypeDef RTC_Handler;
   RTC_Handler.Instance = RTC; 
   
   uint32_t bkp_dr0_data = HAL_RTCEx_BKUPRead(&RTC_Handler, RTC_BKP_DR0);
+  if(bkp_dr0_data == 0xA5A5)
+  {
+      HAL_RTCEx_BKUPWrite(&RTC_Handler, RTC_BKP_DR0, 0);
+      
+  }
     
   /* FPU settings ------------------------------------------------------------*/
   #if (__FPU_PRESENT == 1) && (__FPU_USED == 1)
