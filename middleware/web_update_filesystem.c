@@ -1,6 +1,7 @@
 #include <webnet.h>
 #include <wn_module.h>
 #include <string.h>
+#include <stdio.h>
 #include <fal.h>
 
 static int file_size = 0;
@@ -119,21 +120,17 @@ static int upload_write(struct webnet_session* session, const void* data, rt_siz
 static int upload_done (struct webnet_session* session)
 {
     const char *mimetype;
-    static const char *success_status = "{\"code\":0}";
+    
+    char tmp[100] = "";
+    snprintf(tmp, sizeof(tmp), "{\"code\":%d,\"filesize\":%d}", update_ok ? 0 : -1, file_size);
 
-    static const char *fail_status = "{\"code\":-1}";
-    
-    const char *status = success_status;
-    if(update_ok == 0)
-        status = fail_status;
-    
     /* get mimetype */
     mimetype = mime_get_type(".html");
 
     /* set http header */
     session->request->result_code = 200;
-    webnet_session_set_header(session, mimetype, 200, "Ok", rt_strlen(status));
-    webnet_session_printf(session, status);
+    webnet_session_set_header(session, mimetype, 200, "Ok", rt_strlen(tmp));
+    webnet_session_printf(session, tmp);
 
     return 0;
 }
