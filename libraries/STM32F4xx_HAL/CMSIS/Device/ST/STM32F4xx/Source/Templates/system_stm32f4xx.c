@@ -163,21 +163,36 @@ const uint8_t APBPrescTable[8]  = {0, 0, 0, 0, 1, 2, 3, 4};
   * @param  None
   * @retval None
   */
+typedef void (*rt_boot_app_func)(void);	
 void SystemInit(void)
 {
   __HAL_RCC_PWR_CLK_ENABLE();
   HAL_PWR_EnableBkUpAccess();
     
+  __disable_irq();
   RTC_HandleTypeDef RTC_Handler;
   RTC_Handler.Instance = RTC; 
-  
   uint32_t bkp_dr0_data = HAL_RTCEx_BKUPRead(&RTC_Handler, RTC_BKP_DR0);
   if(bkp_dr0_data == 0xA5A5)
   {
-      HAL_RTCEx_BKUPWrite(&RTC_Handler, RTC_BKP_DR0, 0);
-      
+    HAL_RTCEx_BKUPWrite(&RTC_Handler, RTC_BKP_DR0, 0);
+
+    rt_boot_app_func app_func = NULL;
+    uint32_t app_addr = 0x08040000;
+    if (((*(__IO uint32_t *)(app_addr + 4)) & 0xff000000) != 0x08000000)
+      goto __exit_start_application;
+    
+    if (((*(__IO uint32_t *)app_addr) & 0x2ffe0000) != 0x20000000)
+      goto __exit_start_application;
+    
+    app_func = (rt_boot_app_func)*(__IO uint32_t *)(app_addr + 4);
+    /* Configure main stack */
+    __set_MSP(*(__IO uint32_t *)app_addr);
+    /* jump to application */
+    app_func();
   }
     
+__exit_start_application:
   /* FPU settings ------------------------------------------------------------*/
   #if (__FPU_PRESENT == 1) && (__FPU_USED == 1)
     SCB->CPACR |= ((3UL << 10*2)|(3UL << 11*2));  /* set CP10 and CP11 Full Access */

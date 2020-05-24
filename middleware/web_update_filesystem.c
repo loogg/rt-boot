@@ -120,6 +120,8 @@ static int upload_write(struct webnet_session* session, const void* data, rt_siz
 static int upload_done (struct webnet_session* session)
 {
     const char *mimetype;
+
+    rt_kprintf("Upload done.\r\n");
     
     char tmp[100] = "";
     snprintf(tmp, sizeof(tmp), "{\"code\":%d,\"filesize\":%d}", update_ok ? 0 : -1, file_size);

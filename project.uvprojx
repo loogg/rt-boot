@@ -453,14 +453,29 @@
           <GroupName>Applications</GroupName>
           <Files>
             <File>
+              <FileName>boot.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>applications\boot.c</FilePath>
+            </File>
+            <File>
               <FileName>internal_web.c</FileName>
               <FileType>1</FileType>
               <FilePath>applications\internal_web.c</FilePath>
             </File>
             <File>
+              <FileName>led.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>applications\led.c</FilePath>
+            </File>
+            <File>
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>applications\main.c</FilePath>
+            </File>
+            <File>
+              <FileName>wdog.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>applications\wdog.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -547,6 +562,11 @@
         <Group>
           <GroupName>middleware</GroupName>
           <Files>
+            <File>
+              <FileName>crc32.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>middleware\crc32.c</FilePath>
+            </File>
             <File>
               <FileName>web_update_app.c</FileName>
               <FileType>1</FileType>

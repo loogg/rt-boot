@@ -49,9 +49,9 @@ extern struct fal_flash_dev nor_flash0;
 /* partition table */
 #define FAL_PART_TABLE                                                                                                     \
 {                                                                                                                          \
-    {FAL_PART_MAGIC_WROD, "app",        "onchip_flash_128k", (128 * 1024) ,                 (4 * 128 * 1024),                              0}, \
-    {FAL_PART_MAGIC_WROD, "download",   NOR_FLASH_DEV_NAME,  0,                             (4 * 128 * 1024),                              0}, \
-    {FAL_PART_MAGIC_WROD, "filesystem", NOR_FLASH_DEV_NAME,  (4 * 128 * 1024 + 16 * 1024),  NOR_FLASH_SIZE - (4 * 128 * 1024 + 16 * 1024), 0}, \
+    {FAL_PART_MAGIC_WROD, "app",        "onchip_flash_128k", (128 * 1024) ,      (4 * 128 * 1024),  0}, \
+    {FAL_PART_MAGIC_WROD, "download",   NOR_FLASH_DEV_NAME,  0,                  (4 * 128 * 1024),  0}, \
+    {FAL_PART_MAGIC_WROD, "filesystem", NOR_FLASH_DEV_NAME,  (2 * 1024 * 1024),  (6 * 1024 * 1024), 0}, \
 }
 
 #endif /* FAL_PART_HAS_TABLE_CFG */

@@ -532,7 +532,7 @@ static void eth_phy_isr(void *args)
 #endif /* PHY_USING_INTERRUPT_MODE */
 
 /* Register the EMAC device */
-static int rt_hw_stm32_eth_init(void)
+int rt_hw_stm32_eth_init(void)
 {
     rt_err_t state = RT_EOK;
 
@@ -659,4 +659,3 @@ __exit:
 
     return state;
 }
-INIT_DEVICE_EXPORT(rt_hw_stm32_eth_init);
