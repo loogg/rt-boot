@@ -73,6 +73,7 @@
                     文件名：<span id="fileNameTip"></span><br />
                     文件大小：<span id="fileSizeTip"></span><br />
                     文件类型：<span id="fileTypeTip"></span><br />
+                    成功写入：<span id="fileWrSucce"></span><br />
                 </div>
 
             </div>
@@ -92,10 +93,12 @@
         var fnt = document.getElementById('fileNameTip');
         var fst = document.getElementById('fileSizeTip');
         var ftt = document.getElementById('fileTypeTip');
+        var fws = document.getElementById('fileWrSucce');
         var btn = document.getElementById("uploadBtn");
 
         percent = 0;
         pt.innerHTML = '0%';
+        fws.innerHTML = " ";
         document.querySelector('.step').style.width = percent;
 
         if (file_obj) {
@@ -106,7 +109,7 @@
                 fnt.innerHTML = file_obj.name;
             }
             uploadFileSize = file_obj.size;
-            fst.innerHTML = file_obj.size + "bytes";
+            fst.innerHTML = file_obj.size + " bytes";
             ftt.innerHTML = file_obj.type;
             btn.disabled = false;
         } else {
@@ -132,6 +135,7 @@
                 alert("communication error");
             } else {
                 var resp = JSON.parse(xhr.responseText);
+                document.getElementById("fileWrSucce").innerHTML = resp.filesize + " bytes";
                 if (resp.code == "0") {
                     if (resp.filesize == uploadFileSize) {
                         alert("upload success");
