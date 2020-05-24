@@ -67,6 +67,7 @@ static int boot_check_key(void)
 
 extern int phy_init(void);
 extern int rt_hw_stm32_eth_init(void);
+extern int telnet_module_init(void);
 extern int finsh_system_init(void);
 
 int main(void)
@@ -77,7 +78,9 @@ int main(void)
 
     phy_init();
     rt_hw_stm32_eth_init();
+    telnet_module_init();
     finsh_system_init();
+    
     dfs_mount(RT_NULL, "/", "rom", 0, &(romfs_root));
     internal_web_init();
 

@@ -1,0 +1,22 @@
+[
+ {
+  "path": "/packages/iot/webnet", 
+  "ver": "latest", 
+  "name": "WEBNET"
+ }, 
+ {
+  "path": "/packages/iot/agile_telnet", 
+  "ver": "latest", 
+  "name": "AGILE_TELNET"
+ }, 
+ {
+  "path": "/packages/system/fal", 
+  "ver": "latest", 
+  "name": "FAL"
+ }, 
+ {
+  "path": "/packages/peripherals/agile_led", 
+  "ver": "latest", 
+  "name": "AGILE_LED"
+ }
+]
